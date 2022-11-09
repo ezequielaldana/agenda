@@ -3,6 +3,7 @@
 {
   // obtener datos
   let nombre = document.getElementById('nombre').value;
+  let apellido = document.getElementById('apellido').value;
   let correo = document.getElementById('correo').value;
   let telefono = document.getElementById('telefono').value;
   //cerrar modal
@@ -16,13 +17,14 @@
      google.script.run
     .withSuccessHandler(contactoInsertadoCorrectamente)
     .withFailureHandler(contactoInsertadoError)
-    .insertarContacto(nombre, correo, telefono);
+    .insertarContacto(nombre, apellido, correo, telefono);
   }
 
 function contactoInsertadoCorrectamente()
 {
   // eliminamos datos
   document.getElementById('nombre').value = '';
+  document.getElementById('apellido').value = '';
   document.getElementById('correo').value = '';
   document.getElementById('telefono').value = '';
   // mostrar notificacion

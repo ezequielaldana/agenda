@@ -33,7 +33,7 @@
     <!-- Modal -->
     <div class="modal fade" id="crearContactoModal" tabindex="-1" aria-labelledby="tituloCrearContactoModal"
         aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-lg modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="tituloCrearContactoModal">Nuevo Contacto</h5>
@@ -42,18 +42,22 @@
                 <form onsubmit='insertarContacto()' method="dialog" id="formulario">
 
                     <div class="modal-body">
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" name="nombre" id="nombre" pattern="[\D]*" title="El nombre no debe contener numeros" required>
+                            </div>
+                            <div class="col-6">
+                                <label for="apellido" class="form-label">Apellido</label>
+                                <input type="text" class="form-control" name="apellido" id="apellido" pattern="[^0-9]*" title="El apellido no debe contener numeros" required>
+                            </div>
+                        </div>
 
-                        <div class="mb-3">
-                            <label for="nombre" class="form-label">Introduce el nombre del Contacto</label>
-                            <input type="text" class="form-control" name="nombre" id="nombre" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="correo" class="form-label">Introduce el Correo Electrónico</label>
-                            <input type="email" class="form-control" name="correo" id="correo" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="telefono" class="form-label">Introduce el Telefono del Contacto</label>
-                            <input type="text" class="form-control" name="telefono" id="telefono" required>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="bi bi-envelope-fill"></i></i></span>
+                            <input type="email" class="form-control me-4" name="correo" id="correo" required>
+                            <span class="input-group-text"><i class="bi bi-telephone-fill"></i></i></span>                       
+                            <input type="tel" class="form-control" name="telefono" id="telefono" pattern="[\d*]{9,11}" title="El telefono debe contener entre 9 y 11 numeros" required>
                         </div>
 
                     </div>

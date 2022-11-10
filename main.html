@@ -3,31 +3,18 @@
 
     <div class="d-flex justify-content-center my-3">
         <button type='button' class="btn btn-success m-3" onclick="crearTablaContactos()">Mostrar Contactos</button>
-        <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#crearContactoModal">
-            Nuevo Contacto
+        <button type="button" class="btn btn-primary m-2" onclick="abrirModalCrearContacto()">Crear Contacto
         </button>
     </div>
 
     <!-- Tabla de contactos-->
     <div class="container col-12 col-lg-6 d-flex justify-content-center" id="divContactos"></div>
-
-
+    
     <!-- Notificaciones-->
-    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-        <!--Toast-->
-        <div id="notificacion" class="toast align-items-center text-white border-0" role="alert" aria-live="assertive"
-            aria-atomic="true">
-
-            <div class="toast-header p-0">
-                <div class="icono-notificacion"><i id="iconoNotificacion"></i></div>
-                <strong class="me-auto" id="tituloNotificacion"></strong>
-                <button type="button" class="btn-close m-2" data-bs-dismiss="toast" aria-label="Close"></button>
+       <div class="div-notificaciones position-fixed bottom-0 end-0 p-3">
+            <div class="toast-container" id="contenedorNotificaciones">
             </div>
-
-            <div class="toast-body" id="mensajeNotificacion"></div>
-
-        </div>
-    </div>
+       </div>
 
 
     <!-- Modal -->
@@ -36,11 +23,10 @@
         <div class="modal-lg modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="tituloCrearContactoModal">Nuevo Contacto</h5>
+                    <h5 class="modal-title" id="tituloModal">Nuevo Contacto</h5>
                 </div>
                 <!--Formulario crear contacto-->
                 <form onsubmit='insertarContacto()' method="dialog" id="formulario">
-
                     <div class="modal-body">
                         <div class="row mb-3">
                             <div class="col-6">
@@ -63,7 +49,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-success">Crear Contacto</button>
+                        <button id="botonCrearModificar" type="submit" class="btn btn-success">Crear Contacto</button>
                     </div>
                 </form>
             </div>

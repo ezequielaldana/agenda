@@ -8,7 +8,7 @@
         <button type="button" class="btn btn-warning m-2" onclick="importarContactos()">+5</button>
     </div>
 
-    <!-- Tabla de contactos-->
+    <!-- contactos-->
     <div class="container col-12 d-flex justify-content-center" id="divContactos"></div>
     
     <!-- Notificaciones-->
@@ -29,25 +29,48 @@
                 <!--Formulario crear contacto-->
                 <form onsubmit='insertarContacto()' method="dialog" id="formulario">
                     <div class="modal-body">
+                   
+                      
                         <div class="row mb-3">
-                            <div class="col-6">
-                                <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" name="nombre" id="nombre" pattern="[\D]*" title="El nombre no debe contener numeros" required>
+                      
+                            <!--Parte izquierda-->
+                            <div class="col-6 d-flex flex-column">
+                                <!--nombre-->
+                                <div class="mb-2">
+                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre" id="nombre" pattern="[\D]*" title="El nombre no debe contener numeros" required>
+                                </div>
+                                <!--apellido-->
+                                <div class="mb-2">
+                                    <label for="apellido" class="form-label">Apellido</label>
+                                    <input type="text" class="form-control" name="apellido" id="apellido" pattern="[^0-9]*" title="El apellido no debe contener numeros" required>
+                                </div>
+                                <!--correo-->
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text"><i class="bi bi-envelope-fill"></i></i></span>
+                                    <input type="email" class="form-control" name="correo" id="correo" required>
+                                </div>
+                                <!--telefono-->
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text"><i class="bi bi-telephone-fill"></i></i></span>                       
+                                    <input type="tel" class="form-control" name="telefono" id="telefono" pattern="[\d*]{9,11}" title="El telefono debe contener entre 9 y 11 numeros" required>
+                                </div>
+                                <!--imagen-->
+                                <div class="mb-2">
+                                    <label for="imagen" class="form-label">Selecciona una imagen para el contacto</label>
+                                    <input type="file" accept="imagen/*" class="form-control" name="imagen" id="imagen">
+                                </div>
                             </div>
-                            <div class="col-6">
-                                <label for="apellido" class="form-label">Apellido</label>
-                                <input type="text" class="form-control" name="apellido" id="apellido" pattern="[^0-9]*" title="El apellido no debe contener numeros" required>
+
+                            <!--Parte derecha-->
+                      
+                            <div class="col-6 d-flex justify-content-center align-items-center p-0">
+                                <img class="img-fluid img-form" id="imgForm" alt="Imagen de Contacto">    
                             </div>
+                            
                         </div>
 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="bi bi-envelope-fill"></i></i></span>
-                            <input type="email" class="form-control me-4" name="correo" id="correo" required>
-                            <span class="input-group-text"><i class="bi bi-telephone-fill"></i></i></span>                       
-                            <input type="tel" class="form-control" name="telefono" id="telefono" pattern="[\d*]{9,11}" title="El telefono debe contener entre 9 y 11 numeros" required>
-                        </div>
-
-                    </div>
+                      </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         <button id="botonCrearModificar" type="submit" class="btn btn-success">Crear Contacto</button>

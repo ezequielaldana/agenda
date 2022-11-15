@@ -1,14 +1,14 @@
 const HOJA = SpreadsheetApp.openById('1EyF9A6jJZEaEETzHmLYO-IBDRYgk_esChjjVBwMDdwE').getActiveSheet();
+const CARPETA = DriveApp.getFolderById('1kyRTBnse6GSurKnnklVoHIDk7YPBXpBG');
+const CABECERA_URL_IMAGEN_DRIVE = 'https://drive.google.com/uc?export=view&id='
 
 function doGet(datos)
 {
-    insertarContacto(datos.parameter.nombre, datos.parameter.correo, datos.parameter.telefono);
     return HtmlService.createTemplateFromFile('web').evaluate().setTitle('Agenda Google App Script');
 }
 
 function doPost(datos)
-{
-    insertarContacto(datos.parameter.nombre, datos.parameter.correo, datos.parameter.telefono);    
+{   
     return HtmlService.createTemplateFromFile('web').evaluate().setTitle('Agenda Google App Script');
 
 }
@@ -23,9 +23,16 @@ function obtenerContactos()
 return HOJA.getDataRange().getValues();
 }
 
-function insertarContacto(nombre, apellido, correo, telefono)
+function insertarContacto(contacto, imagen)
 {
-    HOJA.appendRow([nombre,apellido,correo,telefono]);
+    if(imagen)
+    {
+        let blob= Utilities.newBlob(imagen.datos, imagen.tipo, imagen.nombre);
+        let archivo = CARPETA.createFile(blob);
+        contacto.imagen = CABECERA_URL_IMAGEN_DRIVE+archivo.getId();
+    }
+
+    HOJA.appendRow([contacto.nombre,contacto.apellido,contacto.correo,contacto.telefono, contacto.imagen]);
 
 }
 
